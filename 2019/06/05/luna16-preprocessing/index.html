@@ -96,13 +96,23 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Libskim">
-<meta property="og:url" content="https://libskim.github.io/index.html">
+  <meta name="description" content="I. 들어가며실험실에서 딥러닝을 의료 영상 분석에 적용할 프로젝트를 고민한 적이 있었고, 그 일환으로 폐(Lung)의 컴퓨터 단층촬영(CT: Computed Tomography) 영상에서 결절 혹은 암 따위의 오브젝트를 판별하기 위한 연구가 계획되었다. 당시 나는 딥러닝 모델에 투입될 데이터를 전처리하는 역할을 맡았는데, 이와 유사한 기존의 연구나 프로젝트">
+<meta name="keywords" content="luna16">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LUNA16 의료영상 데이터 전처리 (1)">
+<meta property="og:url" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/index.html">
 <meta property="og:site_name" content="Libskim">
+<meta property="og:description" content="I. 들어가며실험실에서 딥러닝을 의료 영상 분석에 적용할 프로젝트를 고민한 적이 있었고, 그 일환으로 폐(Lung)의 컴퓨터 단층촬영(CT: Computed Tomography) 영상에서 결절 혹은 암 따위의 오브젝트를 판별하기 위한 연구가 계획되었다. 당시 나는 딥러닝 모델에 투입될 데이터를 전처리하는 역할을 맡았는데, 이와 유사한 기존의 연구나 프로젝트">
 <meta property="og:locale" content="ko">
+<meta property="og:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/out2.png">
+<meta property="og:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/out3.png">
+<meta property="og:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/out4.png">
+<meta property="og:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/out6.png">
+<meta property="og:updated_time" content="2019-06-04T16:20:31.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Libskim">
+<meta name="twitter:title" content="LUNA16 의료영상 데이터 전처리 (1)">
+<meta name="twitter:description" content="I. 들어가며실험실에서 딥러닝을 의료 영상 분석에 적용할 프로젝트를 고민한 적이 있었고, 그 일환으로 폐(Lung)의 컴퓨터 단층촬영(CT: Computed Tomography) 영상에서 결절 혹은 암 따위의 오브젝트를 판별하기 위한 연구가 계획되었다. 당시 나는 딥러닝 모델에 투입될 데이터를 전처리하는 역할을 맡았는데, 이와 유사한 기존의 연구나 프로젝트">
+<meta name="twitter:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/out2.png">
 
 
 
@@ -110,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="https://libskim.github.io/">
+  <link rel="canonical" href="https://libskim.github.io/2019/06/05/luna16-preprocessing/">
 
 
 
@@ -120,7 +130,7 @@
   };
 </script>
 
-  <title>Libskim</title>
+  <title>LUNA16 의료영상 데이터 전처리 (1) | Libskim</title>
   
 
 
@@ -168,8 +178,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,7 +220,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -273,9 +282,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -307,10 +316,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/05/luna16-preprocessing/" class="post-title-link" itemprop="url">LUNA16 의료영상 데이터 전처리 (1)</a>
+          <h1 class="post-title" itemprop="name headline">LUNA16 의료영상 데이터 전처리 (1)
+
               
             
           </h1>
@@ -392,9 +399,7 @@
       
 
       
-        
-          
-            <h2 id="I-들어가며"><a href="#I-들어가며" class="headerlink" title="I. 들어가며"></a>I. 들어가며</h2><p>실험실에서 딥러닝을 의료 영상 분석에 적용할 프로젝트를 고민한 적이 있었고, 그 일환으로 폐(Lung)의 컴퓨터 단층촬영(CT: Computed Tomography) 영상에서 결절 혹은 암 따위의 오브젝트를 판별하기 위한 연구가 계획되었다. 당시 나는 딥러닝 모델에 투입될 데이터를 전처리하는 역할을 맡았는데, 이와 유사한 기존의 연구나 프로젝트들이 상당히 많았기에 진행에 큰 어려움은 없었다. 다만 그 과정들이 단순치 않아 간략히 기록으로 남긴다.</p>
+        <h2 id="I-들어가며"><a href="#I-들어가며" class="headerlink" title="I. 들어가며"></a>I. 들어가며</h2><p>실험실에서 딥러닝을 의료 영상 분석에 적용할 프로젝트를 고민한 적이 있었고, 그 일환으로 폐(Lung)의 컴퓨터 단층촬영(CT: Computed Tomography) 영상에서 결절 혹은 암 따위의 오브젝트를 판별하기 위한 연구가 계획되었다. 당시 나는 딥러닝 모델에 투입될 데이터를 전처리하는 역할을 맡았는데, 이와 유사한 기존의 연구나 프로젝트들이 상당히 많았기에 진행에 큰 어려움은 없었다. 다만 그 과정들이 단순치 않아 간략히 기록으로 남긴다.</p>
 <h2 id="II-데이터-세트"><a href="#II-데이터-세트" class="headerlink" title="II. 데이터 세트"></a>II. 데이터 세트</h2><p><a href="https://luna16.grand-challenge.org/" target="_blank" rel="noopener">LUNA16</a> 챌린지는 폐 CT 영상 데이터 세트를 내려 받을 수 있는 링크를 제공하며, 이 데이터 세트가 LIDC/IDRI 데이터 세트임을 고지하고 있다. 이 포스트에서 사용할 데이터는 실제 CT 영상을 포함하고 있는 subset*.zip과 각 영상 내 결절 후보들의 좌표와 클래스 정보를 포함하고 있는 candidates_V2.csv 파일이다. 참고로 subset*.zip은 개개의 용량이 수 기가바이트를 상회하므로 내려 받는데 상당한 시간이 소요된다.</p>
 <h2 id="III-파이썬-및-라이브러리"><a href="#III-파이썬-및-라이브러리" class="headerlink" title="III. 파이썬 및 라이브러리"></a>III. 파이썬 및 라이브러리</h2><p>파이썬은 다른 프로그래밍 언어보다 접근성이 좋았고 훌륭한 딥러닝 라이브러리들이 이 언어를 지원하였기에 사용하지 않을 이유가 없었다. 사용된 파이썬 버전은 3.6.5 이고 라이브러리 목록은 아래와 같다.</p>
 <ul>
@@ -455,8 +460,6 @@
 <p>코드 In[6]의 1, 2번 라인은 mhd 파일에 저장된 origin 및 spacing 정보를 가져오는 것이고, 그 다음 라인부터는 리샘플 및 노멀라이즈 후 이미지를 출력하는 과정이다. Out[2], Out[3], 그리고 Out[4]에 비하여 Out[6]가 훨씬 자연스러움을 알 수 있다.</p>
 <p>지금까지 다룬 내용은 단순히 CT 영상을 출력하기 위한 것이다. candidates_V2.csv 에 저장된 좌표 정보에 따라 결절 후보를 크롭하는 과정은 이어지는 포스트에서 다룬다.</p>
 
-          
-        
       
     </div>
 
@@ -477,14 +480,23 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/luna16/" rel="tag"># luna16</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -494,14 +506,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -521,8 +534,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            흝어보기
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -594,6 +616,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-들어가며"><span class="nav-number">1.</span> <span class="nav-text">I. 들어가며</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#II-데이터-세트"><span class="nav-number">2.</span> <span class="nav-text">II. 데이터 세트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#III-파이썬-및-라이브러리"><span class="nav-number">3.</span> <span class="nav-text">III. 파이썬 및 라이브러리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IV-전처리"><span class="nav-number">4.</span> <span class="nav-text">IV. 전처리</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#디렉토리-구성"><span class="nav-number">4.1.</span> <span class="nav-text">디렉토리 구성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CT-영상-훑어보기"><span class="nav-number">4.2.</span> <span class="nav-text">CT 영상 훑어보기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#리샘플링-및-노멀라이즈"><span class="nav-number">4.3.</span> <span class="nav-text">리샘플링 및 노멀라이즈</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -724,6 +763,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -739,6 +782,8 @@
 
   
 
+
+  
 
 
   
