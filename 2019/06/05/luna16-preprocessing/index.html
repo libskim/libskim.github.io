@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/10.png">
 <meta property="og:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/11.png">
 <meta property="og:image" content="https://libskim.github.io/2019/06/05/luna16-preprocessing/12.png">
-<meta property="og:updated_time" content="2019-06-07T06:31:04.825Z">
+<meta property="og:updated_time" content="2019-06-07T06:33:27.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LUNA16 의료영상 데이터 전처리 (1)">
 <meta name="twitter:description" content="I. 들어가며실험실에서 딥러닝을 의료 영상 분석에 적용할 프로젝트를 고민한 적이 있었고, 그 일환으로 폐(lung) 컴퓨터 단층촬영(CT: computed tomography) 영상에서 결절 혹은 암 따위의 오브젝트를 판별하기 위한 연구가 계획되었다. 당시 나는 LUNA16 챌린지를 중심으로 딥러닝 모델에 투입될 데이터의 전처리를 맡았는데, 이와 유사한 기">
@@ -397,7 +397,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-06-07 15:31:04" itemprop="dateModified" datetime="2019-06-07T15:31:04+09:00">2019-06-07</time>
+                <time title="Updated at: 2019-06-07 15:33:27" itemprop="dateModified" datetime="2019-06-07T15:33:27+09:00">2019-06-07</time>
               
             
           </span>
@@ -450,7 +450,7 @@
 
       
         <h2 id="I-들어가며"><a href="#I-들어가며" class="headerlink" title="I. 들어가며"></a>I. 들어가며</h2><p>실험실에서 딥러닝을 의료 영상 분석에 적용할 프로젝트를 고민한 적이 있었고, 그 일환으로 폐(lung) 컴퓨터 단층촬영(CT: computed tomography) 영상에서 결절 혹은 암 따위의 오브젝트를 판별하기 위한 연구가 계획되었다. 당시 나는 <strong><a href="https://luna16.grand-challenge.org/" target="_blank" rel="noopener">LUNA16</a></strong> 챌린지를 중심으로 딥러닝 모델에 투입될 데이터의 전처리를 맡았는데, 이와 유사한 기존의 연구나 프로젝트들이 상당히 많았기에 진행에 큰 어려움은 없었으나 그 과정들이 단순치 않았다.</p>
-<p>나는 이 연구를 통해 처음으로 의료 AI 분야에 관심을 갖게 되었는데, 딥러닝 모델의 구성이나 하이퍼파라메터 조정보다도 데이터가 가진 변수나 속성을 잘 파악하고 질적인 한계를 극복하는 것이 훨씬 해결하기 어려운 분야임을 느꼈다. 특히 이것이 환자의 생명과 관련된 문제였기에 노이즈 추가나 GAN을 통한 이미지 생성 등 데이터 증강 기법 적용이 어떤 결과를 초래할지 전혀 유추할 수 없었으며, 심지어 10-fold cross-validation을 거친 false positive rate가 낮게 나왔음에도 심적으로 전혀 신뢰되지 않았다. 이런 심오함이 오히려 호기심을 자극하는 듯 하다.</p>
+<p>나는 이 연구를 통해 처음으로 의료 AI 분야에 관심을 갖게 되었는데, 딥러닝 모델의 구성이나 하이퍼파라메터 조정보다도 데이터가 가진 변수나 속성을 잘 파악하고 질적인 한계를 극복하는 것이 훨씬 해결하기 어려운 분야임을 느꼈다. 특히 이것이 환자의 생명과 관련된 문제였기에 노이즈 추가나 GAN을 통한 이미지 생성 등 데이터 증강 기법 적용이 어떤 결과를 초래할지 전혀 유추할 수 없었으며, 심지어 10-fold cross-validation을 거친 false positive rate가 낮게 나왔음에도 심적으로 신뢰되지 않았다. 이런 심오함이 오히려 호기심을 자극하는 듯 하다.</p>
 <h2 id="II-데이터-세트"><a href="#II-데이터-세트" class="headerlink" title="II. 데이터 세트"></a>II. 데이터 세트</h2><p>LUNA16은 폐 결절(nodule)과 관련된 두 가지 트랙을 챌린지 종목으로 채택하고 있다. 하나는 영상에서 결절로 의심되는 영역을 탐지하는 <strong>Nodule detection</strong> 이고, 다른 하나는 주어진 결절 후보들의 거짓 양성 분류율을 낮추는 <strong>False positive reduction</strong> 이다. LUNA16 공식 홈페이지에서 데이터 세트를 내려 받을 수 있는 링크를 제공하며, Data 섹션에 설명된 데이터 세트의 구조를 요약하면 다음과 같다.</p>
 <ul>
 <li><strong>subset0.zip ~ subset9.zip</strong>: 모든 CT 영상들이 포함된 zip 파일 10개.</li>
